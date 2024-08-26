@@ -11,7 +11,7 @@
             margin-top: 50px;
         }
 
-        #image-container, #checkbox-container {
+        #image-container, #checkbox-container, #confirm-button {
             display: none;
             margin-top: 20px;
         }
@@ -105,7 +105,7 @@
     <div id="checkbox-container">
         <label>
             <input type="checkbox" id="reserve-checkbox" onchange="toggleConfirmButton()"> 
-            שיריון מקום ברכב של יופה
+            שריון מקום ברכב של יופה
         </label>
     </div>
 
@@ -122,11 +122,13 @@
                 dynamicImage.src = 'Ibiza.png'; // Image for "כן"
                 imageContainer.style.display = 'block';
                 checkboxContainer.style.display = 'block'; // Show the checkbox after the image is shown
+                confirmButton.style.display = 'block'; // Show the confirm button, but it will still be disabled initially
                 confirmButton.disabled = true; // Ensure the button is disabled initially
             } else {
                 dynamicImage.src = 'Stay Home.webp'; // Image for "לא"
                 imageContainer.style.display = 'block';
                 checkboxContainer.style.display = 'none'; // Hide the checkbox if "לא" is clicked
+                confirmButton.style.display = 'none'; // Hide the confirm button if "לא" is clicked
             }
         }
 
@@ -147,7 +149,7 @@
 
         function showSuccessPage() {
             document.body.innerHTML = `
-                <h1>(: נרשמת בהצלחה</h1>
+                <h1>נרשמת בהצלחה :)</h1>
                 <img src="QR Code.PNG" alt="QR Code" style="width: 200px; height: auto; margin-top: 20px;">
                 <p>עשו צילום מסך ליופה</p>
             `; // Display success message, image, and text

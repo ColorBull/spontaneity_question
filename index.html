@@ -62,6 +62,9 @@
             border: none;
             margin-top: 20px;
             cursor: not-allowed;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; /* Centers the button horizontally */
         }
 
         /* Active State for the Confirmation Button */
@@ -105,7 +108,7 @@
     <div id="checkbox-container">
         <label>
             <input type="checkbox" id="reserve-checkbox" onchange="toggleConfirmButton()"> 
-            שריון מקום ברכב של יופה
+            שיריון מקום ברכב של יופה
         </label>
     </div>
 
@@ -149,7 +152,7 @@
 
         function showSuccessPage() {
             document.body.innerHTML = `
-                <h1>נרשמת בהצלחה :)</h1>
+                <h1>(: נרשמת בהצלחה</h1>
                 <img src="QR Code.PNG" alt="QR Code" style="width: 200px; height: auto; margin-top: 20px;">
                 <p>עשו צילום מסך ליופה</p>
             `; // Display success message, image, and text

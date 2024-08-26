@@ -11,7 +11,7 @@
             margin-top: 50px;
         }
 
-        #image-container, #checkbox-container, #confirm-button-container {
+        #image-container, #checkbox-container {
             display: none;
             margin-top: 20px;
         }
@@ -33,8 +33,7 @@
         }
 
         /* "כן" button - green */
-        button:nth-child(3),
-        #confirm-button-container button {
+        button:nth-child(3) {
             background-color: #4CAF50; /* Green background */
         }
 
@@ -44,13 +43,31 @@
         }
 
         /* Hover effects */
-        button:nth-child(3):hover,
-        #confirm-button-container button:hover {
+        button:nth-child(3):hover {
             background-color: #45a049; /* Darker green on hover */
         }
 
         button:nth-child(2):hover {
             background-color: #d32f2f; /* Darker red on hover */
+        }
+
+        /* Confirmation Button */
+        #confirm-button {
+            width: 200px;
+            height: 60px;
+            background-color: grey;
+            color: white;
+            font-size: 24px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 20px;
+            cursor: not-allowed;
+        }
+
+        /* Active State for the Confirmation Button */
+        #confirm-button.active {
+            background-color: #4CAF50;
+            cursor: pointer;
         }
 
         /* Responsive settings for mobile devices */
@@ -63,6 +80,12 @@
             button {
                 width: 100px;
                 height: 100px;
+                font-size: 20px;
+            }
+
+            #confirm-button {
+                width: 150px;
+                height: 50px;
                 font-size: 20px;
             }
         }
@@ -81,25 +104,25 @@
 
     <div id="checkbox-container">
         <label>
-            <input type="checkbox" id="reserve-checkbox" onchange="showConfirmButton()"> 
+            <input type="checkbox" id="reserve-checkbox" onchange="toggleConfirmButton()"> 
             שיריון מקום ברכב של יופה
         </label>
     </div>
 
-    <div id="confirm-button-container">
-        <button onclick="showSuccessPage()">אישור</button>
-    </div>
+    <button id="confirm-button" onclick="showSuccessPage()">אישור</button>
 
     <script>
         function showImage(answer) {
             const imageContainer = document.getElementById('image-container');
             const checkboxContainer = document.getElementById('checkbox-container');
             const dynamicImage = document.getElementById('dynamic-image');
+            const confirmButton = document.getElementById('confirm-button');
 
             if (answer === 'yes') {
                 dynamicImage.src = 'Ibiza.png'; // Image for "כן"
                 imageContainer.style.display = 'block';
                 checkboxContainer.style.display = 'block'; // Show the checkbox after the image is shown
+                confirmButton.disabled = true; // Ensure the button is disabled initially
             } else {
                 dynamicImage.src = 'Stay Home.webp'; // Image for "לא"
                 imageContainer.style.display = 'block';
@@ -107,14 +130,18 @@
             }
         }
 
-        function showConfirmButton() {
+        function toggleConfirmButton() {
             const checkbox = document.getElementById('reserve-checkbox');
-            const confirmButtonContainer = document.getElementById('confirm-button-container');
+            const confirmButton = document.getElementById('confirm-button');
 
             if (checkbox.checked) {
-                confirmButtonContainer.style.display = 'block'; // Show the confirmation button if checkbox is ticked
+                confirmButton.classList.add('active');
+                confirmButton.disabled = false;
+                confirmButton.style.cursor = 'pointer';
             } else {
-                confirmButtonContainer.style.display = 'none'; // Hide the confirmation button if checkbox is unticked
+                confirmButton.classList.remove('active');
+                confirmButton.disabled = true;
+                confirmButton.style.cursor = 'not-allowed';
             }
         }
 

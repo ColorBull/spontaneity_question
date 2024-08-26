@@ -17,8 +17,16 @@
         }
 
         img {
-            width: 80%; /* Increase the width to 80% of the screen */
-            max-width: 800px; /* Set a max width for larger screens */
+            width: 100%; /* Take full width of the screen */
+            max-width: 800px; /* Limit maximum width */
+        }
+
+        /* Responsive settings for mobile devices */
+        @media (max-width: 600px) {
+            img {
+                width: 100%; /* Ensure image fills the screen on mobile */
+                max-width: none; /* Remove the max-width constraint for small devices */
+            }
         }
     </style>
 </head>

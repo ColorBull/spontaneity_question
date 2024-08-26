@@ -110,7 +110,7 @@
     <div id="checkbox-container">
         <label>
             <input type="checkbox" id="reserve-checkbox" onchange="toggleConfirmButton()"> 
-            שיריון מקום ברכב של יופה
+            שריון מקום ברכב של יופה
         </label>
     </div>
 
@@ -153,11 +153,13 @@
         }
 
         function showSuccessPage() {
+            const randomNumber = Math.floor(10000 + Math.random() * 90000); // Generate random 5-digit number
             document.body.innerHTML = `
-                <h1>(: נרשמת בהצלחה</h1>
+                <h1>נרשמת בהצלחה :)</h1>
+                <h2>${randomNumber}</h2>
                 <img src="QR Code.PNG" alt="QR Code" style="width: 200px; height: auto; margin-top: 20px;">
-                <p>עשו צילום מסך ל-יופה וחכו לאישור</p>
-            `; // Display success message, image, and text
+                <p>עשו צילום מסך ליופה וחכו לאישור</p>
+            `; // Display success message, random number, image, and text
         }
     </script>
 </body>

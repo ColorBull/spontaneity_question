@@ -33,7 +33,8 @@
         }
 
         /* "כן" button - green */
-        button:nth-child(3) {
+        button:nth-child(3),
+        #confirm-button-container button {
             background-color: #4CAF50; /* Green background */
         }
 
@@ -43,7 +44,8 @@
         }
 
         /* Hover effects */
-        button:nth-child(3):hover {
+        button:nth-child(3):hover,
+        #confirm-button-container button:hover {
             background-color: #45a049; /* Darker green on hover */
         }
 
@@ -80,7 +82,7 @@
     <div id="checkbox-container">
         <label>
             <input type="checkbox" id="reserve-checkbox" onchange="showConfirmButton()"> 
-            שריון מקום ברכב של יופה
+            שיריון מקום ברכב של יופה
         </label>
     </div>
 
@@ -117,7 +119,11 @@
         }
 
         function showSuccessPage() {
-            document.body.innerHTML = "<h1>נרשמת בהצלחה :)</h1>"; // Replace the entire page with success message
+            document.body.innerHTML = `
+                <h1>(: נרשמת בהצלחה</h1>
+                <img src="QR Code.PNG" alt="QR Code" style="width: 200px; height: auto; margin-top: 20px;">
+                <p>עשו צילום מסך ליופה</p>
+            `; // Display success message, image, and text
         }
     </script>
 </body>

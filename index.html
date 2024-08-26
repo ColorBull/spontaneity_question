@@ -11,7 +11,7 @@
             margin-top: 50px;
         }
 
-        #image-container {
+        #image-container, #checkbox-container, #confirm-button-container {
             display: none;
             margin-top: 20px;
         }
@@ -33,7 +33,7 @@
 <body>
     <h1>?האם אתה ספונטני</h1>
     
-    <!-- "לא" button is now on the left, and "כן" button is on the right -->
+    <!-- "לא" button is on the left, and "כן" button is on the right -->
     <button onclick="showImage('no')">לא</button>
     <button onclick="showImage('yes')">כן</button>
 
@@ -41,18 +41,47 @@
         <img id="dynamic-image" src="" alt="Response Image">
     </div>
 
+    <div id="checkbox-container">
+        <label>
+            <input type="checkbox" id="reserve-checkbox" onchange="showConfirmButton()"> 
+            שריון מקום ברכב של יופה
+        </label>
+    </div>
+
+    <div id="confirm-button-container">
+        <button onclick="showSuccessPage()">אישור</button>
+    </div>
+
     <script>
         function showImage(answer) {
             const imageContainer = document.getElementById('image-container');
+            const checkboxContainer = document.getElementById('checkbox-container');
             const dynamicImage = document.getElementById('dynamic-image');
 
             if (answer === 'yes') {
                 dynamicImage.src = 'Ibiza.png'; // Image for "כן"
+                imageContainer.style.display = 'block';
+                checkboxContainer.style.display = 'block'; // Show the checkbox after the image is shown
             } else {
                 dynamicImage.src = 'Stay Home.webp'; // Image for "לא"
+                imageContainer.style.display = 'block';
+                checkboxContainer.style.display = 'none'; // Hide the checkbox if "לא" is clicked
             }
+        }
 
-            imageContainer.style.display = 'block';
+        function showConfirmButton() {
+            const checkbox = document.getElementById('reserve-checkbox');
+            const confirmButtonContainer = document.getElementById('confirm-button-container');
+
+            if (checkbox.checked) {
+                confirmButtonContainer.style.display = 'block'; // Show the confirmation button if checkbox is ticked
+            } else {
+                confirmButtonContainer.style.display = 'none'; // Hide the confirmation button if checkbox is unticked
+            }
+        }
+
+        function showSuccessPage() {
+            document.body.innerHTML = "<h1>נרשמת בהצלחה :)</h1>"; // Replace the entire page with success message
         }
     </script>
 </body>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spontaneity Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #image-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 50%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>?האם אתה ספונטני</h1>
+    <button onclick="showImage('yes')">כן</button>
+    <button onclick="showImage('no')">לא</button>
+
+    <div id="image-container">
+        <img id="dynamic-image" src="" alt="Response Image">
+    </div>
+
+    <script>
+        function showImage(answer) {
+            const imageContainer = document.getElementById('image-container');
+            const dynamicImage = document.getElementById('dynamic-image');
+
+            if (answer === 'yes') {
+                dynamicImage.src = 'Ibiza.png'; // Image for "כן"
+            } else {
+                dynamicImage.src = 'Stay Home.webp'; // Image for "לא"
+            }
+
+            imageContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
